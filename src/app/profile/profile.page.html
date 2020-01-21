@@ -1,0 +1,64 @@
+<ion-content class="ion-padding">
+  <div *ngIf="userProfile?.fullName">
+        <img class="profilePic" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+      <h1 class="userName">Hi {{ userProfile?.firstname }}</h1>
+    </div>
+    <div class="clearfix"></div>
+      
+  <ion-list class="links" lines="full">
+    <ion-item routerLink="edit">
+      <ion-icon slot="start" name="contact"></ion-icon>
+      <h5 class="soft">Personal information</h5>
+    </ion-item>
+    <ion-item>
+      <ion-avatar slot="end">
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-avatar>
+      <h5 class="soft">Payments</h5>
+    </ion-item>
+    <ion-item>
+        <ion-avatar slot="end">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+        <h5 class="soft">Notifications</h5>
+      </ion-item>
+      <ion-item>
+          <ion-avatar slot="end">
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          </ion-avatar>
+          <h5 class="soft">Refer a friend</h5>
+        </ion-item>
+        <ion-item>
+            <ion-avatar slot="end">
+              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+            </ion-avatar>
+            <h5 class="soft">FAQs & help</h5>
+          </ion-item>
+          <ion-item>
+              <ion-avatar slot="end">
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+              </ion-avatar>
+              <h5 class="soft">Give us feedback</h5>
+            </ion-item>
+            <ion-item>
+                <ion-avatar slot="end">
+                  <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                </ion-avatar>
+                <h5 class="soft">Rate the app</h5>
+              </ion-item>
+            <ion-item>
+                <ion-avatar slot="end">
+                  <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                </ion-avatar>
+                <h5 class="soft">Terms of service</h5>
+              </ion-item>
+            
+  </ion-list>
+
+  <ion-button fill="outline" color="dark" expand="block" (click)="logOut()">
+    Log out
+  </ion-button>
+
+  <p class="soft ion-text-center ion-padding-top">Version {{ VersionNumber }}({{ VersionCode }})</p>
+
+</ion-content>

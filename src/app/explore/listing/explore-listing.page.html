@@ -1,0 +1,67 @@
+<ion-header>
+<!--   <ion-toolbar>
+    <ion-title>Explore</ion-title>
+  </ion-toolbar> -->
+  <ion-searchbar animated showCancelButton="never" placeholder="Tips/Recipes/Stories"></ion-searchbar>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <ion-row>
+        <ion-col size="9">
+            <h4>What experience are you looking for, Collin?</h4>
+            <p>Explore deep and personal experiences in Uganda</p>
+        </ion-col>
+    </ion-row>
+
+  <ng-container *ngIf="listing?.items">
+    <div class="listing-item" *ngFor="let item of listing.items">
+      <ion-row class="image-row">
+        <ion-col size="12">
+          <app-image-shell [mode]="'cover'" class="add-overlay item-image" [src]="item.image" [routerLink]="['/app/explore/details', item.slug]">
+            <app-aspect-ratio [ratio]="{w:3, h:2}">
+              <div class="content-inside-item-image">
+                <div class="item-icon">
+                  <app-aspect-ratio [ratio]="{w:1, h:1}">
+                    <app-image-shell [src]="item.icon" class="icon-image"></app-image-shell>
+                  </app-aspect-ratio>
+                </div>
+              </div>
+            </app-aspect-ratio>
+          </app-image-shell>
+        </ion-col>
+      </ion-row>
+      <ion-row class="info-row">
+        <ion-col class="main-info-col">
+          <h3 class="item-name">
+            <a class="name-anchor" [routerLink]="['/app/explore/details', item.slug]">
+              <app-text-shell animation="bouncing" [data]="(item?.name && item?.category) ? (item.name + ' - ' + item.category) : (item.name)"></app-text-shell>
+            </a>
+          </h3>
+          <p class="item-description">
+            <app-text-shell animation="bouncing" [data]="item.description" lines="3"></app-text-shell>
+          </p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ng-container>
+
+  <ion-row>
+      <ion-col size="9">
+          <h3>Unique recipes for you and the family</h3>
+          <p>Try out some of our easy recipes by some of Kampala's best chefs</p>
+      </ion-col>
+  </ion-row>
+
+  <ion-row>
+      <ion-col size="9">
+          <h3>Inspiring stories and tips</h3>
+          <p>Everyday we share insightful stories and practical tips to improve the quality of your life experience</p>
+      </ion-col>
+      <ion-col size="12">
+      <app-posts></app-posts>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

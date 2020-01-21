@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Personal Info</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+ 
+        <ion-list class="inputs-list" lines="full">
+
+            <ion-row class="select-user-image-row">
+                <ion-col class="user-image-col" size="5">
+                  <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+                    <app-image-shell [mode]="'cover'" class="user-image" animation="spinner" [src]="" [alt]="'user image'"></app-image-shell>
+                  </app-aspect-ratio>
+                  <ion-button class="change-image-btn" color="light" (click)="changeUserImage();">
+                    <ion-icon class="btn-icon" slot="icon-only" name="camera"></ion-icon>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+
+          <ion-item class="input-item">
+            <ion-label position="stacked">First Name</ion-label>
+            <ion-input type="text" readonly>{{ userProfile?.firstname }}</ion-input>
+            <ion-button (click)="updateFirstName()" slot="end" fill="clear">edit</ion-button>
+          </ion-item>
+
+          <ion-item class="input-item">
+              <ion-label position="stacked">Last Name</ion-label>
+              <ion-input type="text" readonly>{{ userProfile?.lastname }}</ion-input>
+              <ion-button (click)="updateLastName()" slot="end" fill="clear">edit</ion-button>
+            </ion-item>
+        
+          <ion-item class="input-item">
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input type="email" readonly>{{ userProfile?.email }}</ion-input>
+            <ion-button (click)="updateEmail()" slot="end" fill="clear">edit</ion-button>
+          </ion-item>
+          
+          <ion-item class="input-item">
+              <ion-label position="stacked">Phone</ion-label>
+              <ion-input type="text" readonly>{{ userProfile?.phone }}</ion-input>
+              <ion-button (click)="updatePhone()" slot="end" fill="clear">edit</ion-button>
+            </ion-item>
+
+            <ion-item class="input-item">
+                <ion-label position="stacked">Password</ion-label>
+                <ion-input type="text" readonly>***********</ion-input>
+                <ion-button (click)="updatePassword()" slot="end" fill="clear">edit</ion-button>
+              </ion-item>
+  
+        </ion-list>
+
+</ion-content>

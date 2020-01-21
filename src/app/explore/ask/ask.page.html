@@ -1,0 +1,32 @@
+<ion-header translucent>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="closeQuestionModal()"><ion-icon name="close-circle" size="large"></ion-icon> Close</ion-button>
+    </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-row>
+    <ion-col size="12">
+      <h1>What's on your mind, Collin?</h1>
+     <p class="soft">Before you answer, have you had a chance to look at our frequently asked questions? There are several answers about every Kitchen Brigade experience.</p>
+      <ion-button fill="outline">Visit our FAQs</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="12">
+      <p class="soft">Didn't find your answer? Ask the team below</p>
+    </ion-col>
+    <ion-col size="12">
+        <ion-item>
+            <ion-label position="floating">Add your message</ion-label>
+            <ion-textarea rows="6"></ion-textarea>
+          </ion-item>
+          <ion-button style="margin-top: 10px;" fill="outline" size="small">Send</ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "KitchenBrigade",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
