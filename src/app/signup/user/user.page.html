@@ -1,0 +1,76 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Your Profile</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="profile-content">
+  
+    <h2>Lets get to know you</h2>
+  
+    <form class="validations-form" [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+
+       
+
+        <ion-list class="inputs-list" lines="full">
+
+            <!-- <ion-row class="select-user-image-row">
+                <ion-col class="user-image-col" size="5">
+                  <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+                    <app-image-shell [mode]="'cover'" class="user-image" animation="spinner" [src]="" [alt]="'user image'"></app-image-shell>
+                  </app-aspect-ratio>
+                  <ion-button class="change-image-btn" color="light" (click)="addPhoto();">
+                    <ion-icon class="btn-icon" slot="icon-only" name="camera"></ion-icon>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+     -->
+          <ion-item class="input-item">
+            <ion-label position="floating">First Name</ion-label>
+            <ion-input type="text" formControlName="firstname" clearInput></ion-input>
+          </ion-item>
+          <div class="error-container">
+            <ng-container *ngFor="let validation of validations.firstname">
+              <div class="error-message" *ngIf="profileForm.get('firstname').hasError(validation.type) && (profileForm.get('firstname').dirty || profileForm.get('firstname').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ validation.message }}</span>
+              </div>
+            </ng-container>
+          </div>
+    
+          <ion-item class="input-item">
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input type="text" formControlName="lastname" clearInput></ion-input>
+          </ion-item>
+          <div class="error-container">
+            <ng-container *ngFor="let validation of validations.lastname">
+              <div class="error-message" *ngIf="profileForm.get('lastname').hasError(validation.type) && (profileForm.get('lastname').dirty || profileForm.get('lastname').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ validation.message }}</span>
+              </div>
+            </ng-container>
+          </div>
+
+          <ion-item class="input-item">
+              <ion-label position="floating">Mobile Number</ion-label>
+              <ion-input type="text" formControlName="phone" clearInput inputmode="tel"></ion-input>
+            </ion-item>
+            <div class="error-container">
+                <ng-container *ngFor="let validation of validations.phone">
+                  <div class="error-message" *ngIf="profileForm.get('phone').hasError(validation.type) && (profileForm.get('phone').dirty || profileForm.get('phone').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+  
+        </ion-list>
+    
+        <ion-button class="submit-btn" type="submit" expand="block" fill="outline" [disabled]="!profileForm.valid">Update Profile</ion-button>
+      </form>
+   
+  </ion-content>
+  

@@ -1,0 +1,25 @@
+:host-context(app-post-details) {
+
+    p {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    .post-content {
+      white-space: pre-wrap;
+      padding: 20px;
+    }
+    
+    .date {
+      font-weight: 600;
+      padding-bottom: 20px;
+    }
+
+    app-image-shell {
+      --image-shell-loading-background: rgba(241, 145, 89, 0.6);
+      --image-shell-animation-color: rgba(241, 145, 89, 0.8);
+    }
+  
+  }
+  

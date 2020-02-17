@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Your Bookings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ng-container *ngIf="userBookings">
+
+  
+        <ion-item-group>
+            <ion-item-divider sticky>
+              <ion-label>Upcoming</ion-label>
+            </ion-item-divider>
+              <ion-row class="bookingType" *ngFor="let booking of userBookings">
+                  <ion-col *ngIf="(booking.date | date:'fullDate') < (today | date:'fullDate')" class="booking" size="12" routerLink="details/{{ booking.id }}">
+                    <h4 class="booking-type">{{ booking.id }}</h4>
+                    {{ booking.packageId }}
+                    <p>{{ booking.date | date }} at {{ booking.time | date: 'shortTime' }}</p>
+                  </ion-col>
+              </ion-row>
+              <ng-template #noUpcoming><p style="padding-inline-start: 20px;">You have no bookings scheduled at this time.</p></ng-template>
+          </ion-item-group>
+
+          <ion-item-group>
+              <ion-item-divider sticky>
+                <ion-label>In the past</ion-label>
+              </ion-item-divider>
+              <ion-row class="bookingType" *ngFor="let booking of userBookings">
+                    <ion-col *ngIf="(booking.date | date:'fullDate') > (today | date:'fullDate')" class="booking" size="12" routerLink="details/{{ booking.id }}">
+                        <h4 class="booking-type">{{ booking.id }}</h4>
+                        {{ booking.packageId }}
+                        <p>{{ booking.date | date }} at {{ booking.time | date: 'shortTime' }}</p>
+                      </ion-col>
+                </ion-row>
+            </ion-item-group>
+
+      </ng-container>
+  
+
+</ion-content>

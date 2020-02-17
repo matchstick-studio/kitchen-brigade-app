@@ -7,7 +7,10 @@ import { first } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+
   public userId: string;
+  userData: any = {};
+  
   constructor(
     private afAuth: AngularFireAuth,
     private firestore: AngularFirestore
@@ -34,7 +37,7 @@ export class AuthService {
         password
       );
       await this.firestore
-        .doc(`userProfile/${newUserCredential.user.uid}`)
+        .doc(`users/${newUserCredential.user.uid}`)
         .set({ email });
       return newUserCredential;
     } catch (error) {
@@ -49,4 +52,13 @@ export class AuthService {
   logout(): Promise<void> {
     return this.afAuth.auth.signOut();
   }
+
+   checkAuth() {
+    return new Promise((resolve) => {
+        this.afAuth.auth.onAuthStateChanged(user => {
+            this.userData = user;
+            resolve(user);
+        })
+    })
+}
 }

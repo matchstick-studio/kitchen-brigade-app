@@ -6,12 +6,92 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding booking-form-content">
 
   <ion-row>
     <ion-col size="12">
-      <h1>Lets get started</h1>
-     <p class="soft">Every experience is different. That's why we need a few more details for planning</p>
+      <h2>Lets confirm your booking</h2>
+
+      <ion-item>
+          <ion-thumbnail slot="start">
+            <ion-img [src]="packageInfo.image"></ion-img>
+          </ion-thumbnail>
+          <ion-label>{{ packageInfo.name }}</ion-label>
+      </ion-item>
+
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="12">
+
+    <p class="soft">Every experience is different. That's why we need a few more details for planning</p>
+
+    <form class="booking-form" [formGroup]="bookingForm" (ngSubmit)="createBooking()">
+
+      <ion-list class="inputs-list" lines="full">
+
+          <ion-item class="input-item">
+              <ion-label>Choose a date</ion-label>
+              <ion-datetime formControlName="date" displayFormat="DD/MM/YYYY" [min]="minDate" placeholder="Select date"></ion-datetime>
+            </ion-item>
+            <div class="error-container">
+              <ng-container *ngFor="let validation of validations.date">
+                <div class="error-message" *ngIf="bookingForm.get('date').hasError(validation.type) && (bookingForm.get('date').dirty || bookingForm.get('date').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label>Pick a time</ion-label>
+                <ion-datetime formControlName="time" display-format="h:mm A" picker-format="h:mm A" placeholder="Select time"></ion-datetime>
+              </ion-item>
+              <div class="error-container">
+                <ng-container *ngFor="let validation of validations.time">
+                  <div class="error-message" *ngIf="bookingForm.get('time').hasError(validation.type) && (bookingForm.get('time').dirty || bookingForm.get('time').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+        
+          <ion-item class="counter-item input-item">
+              <ion-label>No. of people</ion-label>
+              <app-counter-input formControlName="people"></app-counter-input>
+            </ion-item>
+            <div class="error-container">
+              <ng-container *ngFor="let validation of validations.people">
+                <div class="error-message" *ngIf="bookingForm.get('people').hasError(validation.type) && (bookingForm.get('people').dirty || bookingForm.get('people').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }} {{ bookingForm.get('people').getError(validation.type).min }} and {{ bookingForm.get('people').getError(validation.type).max }}</span>
+                </div>
+              </ng-container>
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">Alternative number</ion-label>
+                <ion-input placeholder="Where we can reach you" type="tel" inputmode="tel" formControlName="alternatePhone"></ion-input>
+              </ion-item>
+              <div class="error-container">
+                <ng-container *ngFor="let validation of validations.alternatePhone">
+                    <div class="error-message" *ngIf="bookingForm.get('alternatePhone').hasError(validation.type) && (bookingForm.get('alternatePhone').dirty || bookingForm.get('alternatePhone').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+
+              <ion-item class="input-item">
+                  <ion-label position="floating">Anything we should know?</ion-label>
+                  <ion-textarea formControlName="notes" rows="6" cols="20" placeholder="Enter more information here..."></ion-textarea>
+              </ion-item>
+      </ion-list>
+
+      <ion-button class="submit-btn" type="submit" expand="block" fill="outline" [disabled]="!bookingForm.valid">Submit</ion-button>
+
+    </form>
     </ion-col>
   </ion-row>
 

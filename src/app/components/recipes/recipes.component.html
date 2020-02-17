@@ -1,0 +1,9 @@
+<ion-slides pager="true" [options]="slideOptsRecipes">
+    <ion-progress-bar *ngIf="loading === true" type="indeterminate"></ion-progress-bar>
+    <ion-slide *ngFor="let item of getKeys(thumbs)" (click)="goTo(thumbs.get(item).id)">
+        <div class="recipe ion-text-start">
+            <img class="recipeImg" [src]="thumbs.get(item).image" />
+            <h5 class="recipeTitle">{{thumbs.get(item).title}}</h5>
+          </div>
+      </ion-slide>    
+</ion-slides>

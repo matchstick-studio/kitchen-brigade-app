@@ -8,5 +8,6 @@ export interface UserCredential {
     firstname: string;
     lastname: string;
     phone: string;
-    picture: string;
+    avatar: string;
+    uid: string;
   }

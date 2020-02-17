@@ -18,28 +18,16 @@ import { AuthService } from '../services/firestore/firebase-authentication.servi
 })
 export class SignupPage implements OnInit {
 
-  firstname = '';
-  lastname = '';
   email = '';
-  phone = '';
   password = '';
  
   signUpForm: FormGroup;
   matching_passwords_group: FormGroup;
 
   validations = {
-    'firstname': [
-      { type: 'required', message: 'First name is required.' }
-    ],
-    'lastname': [
-      { type: 'required', message: 'Last name is required.' }
-    ],
     'email': [
       { type: 'required', message: 'Email is required.' },
       { type: 'pattern', message: 'Enter a valid email.' }
-    ],
-    'phone': [
-      { type: 'required', message: 'Phone is required.' }
     ],
     'password': [
       { type: 'required', message: 'Password is required.' },
@@ -73,13 +61,10 @@ export class SignupPage implements OnInit {
     });
 
     this.signUpForm = new FormGroup({
-      'firstname': new FormControl('', Validators.required),
-      'lastname': new FormControl('', Validators.required),
       'email': new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ])),
-      'phone': new FormControl('', Validators.required),
       'matching_passwords': this.matching_passwords_group,
       'terms': new FormControl(true, Validators.pattern('true'))
     });
@@ -88,9 +73,9 @@ export class SignupPage implements OnInit {
   signup() {
       this.authServ.signup(this.signUpForm.value.email, this.matching_passwords_group.value.password).then(
         userData => {
-          this.util.presentToast('Welcome to KitchenBrigade, please login!', true, 'bottom', 2100);
+          this.util.presentToast('Welcome to KitchenBrigade :)', true, 'bottom', 2100);
           this.authServ.userId = userData.user.uid;
-          this.util.navigate('auth/login', false);
+          this.util.navigate('auth/signup/user', false);
         }
       ).catch(err => {
         if (err) {

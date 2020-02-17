@@ -37,11 +37,15 @@ export class WordpressService {
         return this.http.get(this.mainUrl + "posts/?status=publish&search=" + searchStr + "&page=" + page);
     }
 
-    public getPost(recipeId: string): any {
-        return this.http.get(this.mainUrl + "posts/" + recipeId);
+    public getPost(postId: string): any {
+        return this.http.get(this.mainUrl + "posts/" + postId);
     }
 
     public getRecipes(page: number): any {
         return this.http.get(this.mainUrl + "recipe/?_embed&status=publish&page=" + page);
+    }
+
+    public getRecipe(recipeId: string): any {
+        return this.http.get(this.mainUrl + "recipe/" + recipeId);
     }
 }

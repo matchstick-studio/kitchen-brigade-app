@@ -1,19 +1,28 @@
 {
+  "items": [
+{
   "id": 1,
   "image": "./assets/sample-images/travel/travel-details-image.png",
   "icon": "./assets/sample-images/travel/travel-details-icon.png",
   "name": "Cooking Classes",
-  "shortDescription": "Deep engaging cooking lessons for you and your family",
-  "rating": 4.8,
-  "reviewsCount": 17,
-  "tags": [
-    "Cooking",
-    "Class",
-    "Learning",
-    "Personal",
-    "House"
-  ],
-  "fullDescription": "La Feria de Tristán Narvaja is the famous Montevideo street market. Sometimes it’s called “flea market”, but I would refrain from this description simply because it is so much more than just a place to sell secondhand goods. When the day is just about to start, the area transforms into a strange universe. Greengrocers screaming at the top of their lungs vying for potential customers attention. ",
+  "shortDesc": "Deep engaging cooking lessons for you and your family",
+  "longDesc": "La Feria de Tristán Narvaja is the famous Montevideo street market. Sometimes it’s called “flea market”, but I would refrain from this description simply because it is so much more than just a place to sell secondhand goods. When the day is just about to start, the area transforms into a strange universe. Greengrocers screaming at the top of their lungs vying for potential customers attention. ",
+  "title1": "What you'll do",
+  "title2": "Your host",
+  "hostName":"KitchenBrigade",
+  "hostInfo": "KitchenBrigade is a solution service provider in the culinary sector that aims to avail to you all your culinary needs and kitchen management service at your fingertips. From planning your catered menu to training your staff on how to run and manage your restaurant business.",
+  "hostImage": "./assets/images/icon.png",
+  "title3": "What's included",
+  "title4": "Reviews",
+  "title5": "Things to keep in mind"
+},
+{
+  "id": 2,
+  "image": "./assets/sample-images/travel/travel-details-image.png",
+  "icon": "./assets/sample-images/travel/travel-details-icon.png",
+  "name": "Personal Chef",
+  "shortDesc": "Deep engaging cooking lessons for you and your family",
+  "longDesc": "La Feria de Tristán Narvaja is the famous Montevideo street market. Sometimes it’s called “flea market”, but I would refrain from this description simply because it is so much more than just a place to sell secondhand goods. When the day is just about to start, the area transforms into a strange universe. Greengrocers screaming at the top of their lungs vying for potential customers attention. ",
   "title1": "What you'll do",
   "title2": "Your host",
   "hostName":"KitchenBrigade",
@@ -23,3 +32,4 @@
   "title4": "Reviews",
   "title5": "Things to keep in mind"
 }
+]}

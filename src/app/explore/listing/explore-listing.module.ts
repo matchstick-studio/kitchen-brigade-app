@@ -8,18 +8,16 @@ import { IonicModule } from '@ionic/angular';
 
 import { ComponentsModule } from '../../components/components.module';
 import { PostsComponent } from '../../components/posts/posts.component';
+import { RecipesComponent } from '../../components/recipes/recipes.component';
 
 import { ExploreListingPage } from './explore-listing.page';
-import { ExploreListingResolver } from './explore-listing.resolver';
+
 import { ExploreService } from '../explore.service';
 
 const routes: Routes = [
   {
     path: '',
-    component: ExploreListingPage,
-    resolve: {
-      data: ExploreListingResolver
-    }
+    component: ExploreListingPage
   }
 ];
 
@@ -32,9 +30,8 @@ const routes: Routes = [
     ComponentsModule,
     HttpClientModule
   ],
-  declarations: [ExploreListingPage, PostsComponent],
+  declarations: [ExploreListingPage, PostsComponent, RecipesComponent],
   providers: [
-    ExploreListingResolver,
     ExploreService
   ]
 })

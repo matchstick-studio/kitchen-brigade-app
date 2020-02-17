@@ -17,8 +17,41 @@ const routes: Routes = [
             loadChildren: () => import('../explore/listing/explore-listing.module').then(m => m.ExploreListingPageModule)
           },
           {
-            path: 'details/:productId',
+            path: 'details/:id',
             loadChildren: () => import('../explore/details/explore-details.module').then(m => m.ExploreDetailsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'post-details/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+            import('../post-details/post-details.module').then(m => m.PostDetailsPageModule)
+          },
+        ]
+      },
+      {
+        path: 'recipe-details/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+            import('../recipe-details/recipe-details.module').then(m => m.RecipeDetailsPageModule)
+          },
+        ]
+      },
+      {
+        path: 'bookings',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../bookings/bookings.module').then(m => m.BookingsPageModule)
+          },
+          {
+            path: 'details/:id',
+            loadChildren: () => import('../bookings/details/booking-details.module').then(m => m.BookingDetailsPageModule)
           }
         ]
       },

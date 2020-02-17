@@ -1,49 +1,48 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 
-import { ExploreDetailsModel } from './explore-details.model';
+import { Package } from '../../models/package';
+import { ExploreService } from '../explore.service';
+import { Observable } from 'rxjs';
+
 import { AskPage } from '../ask/ask.page';
-import { DietaryPage } from '../important/dietary/dietary.page';
 import { CancellationPage } from '../important/cancellation/cancellation.page';
 import { CommunicationPage } from '../important/communication/communication.page';
-import { RequirementsPage } from '../important/requirements/requirements.page';
-
 import { BookingPage } from '../../booking/booking.page';
 
 @Component({
   selector: 'app-explore-details',
   templateUrl: './explore-details.page.html',
   styleUrls: [
-    './styles/explore-details.page.scss',
-    './styles/explore-details.shell.scss'
+    './styles/explore-details.page.scss'
   ]
 })
 export class ExploreDetailsPage implements OnInit {
-  details: ExploreDetailsModel;
-
-  @HostBinding('class.is-shell') get isShell() {
-    return (this.details && this.details.isShell) ? true : false;
-  }
+    
+  public package: Observable<Package>
+  packageJazz: Package;
 
   constructor(
+    private exploreService : ExploreService,
     public actionsheetCtrl: ActionSheetController,
     public modalCtl: ModalController,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) { 
 
-  ngOnInit(): void {
-    this.route.data.subscribe((resolvedRouteData) => {
-      const detailsDataStore = resolvedRouteData['data'];
+    }
 
-      detailsDataStore.state.subscribe(
-        (state) => {
-          this.details = state;
-        },
-        (error) => {}
-      );
-    },
-    (error) => {});
+  ngOnInit() {
+    const id: string = this.route.snapshot.paramMap.get('id');
+    this.package = this.exploreService.getPackageDetails(id).valueChanges();
+
+    this.exploreService.getPackageDetails(id)
+    .valueChanges()
+    .subscribe(packageInfo => {
+      this.packageJazz = packageInfo;
+    })
+    
   }
+
   async presentshareSheet() {
     const shareSheet = await this.actionsheetCtrl.create({
       header: 'Share',
@@ -92,12 +91,7 @@ export class ExploreDetailsPage implements OnInit {
     });
     return await askQuestion.present();
   }
-  async presentDietaryPreferences(){
-    const dietaryPrefs = await this.modalCtl.create({
-      component: DietaryPage
-    });
-    return await dietaryPrefs.present();
-  }
+
   async presentCancellationPolicy(){
     const cancellationModal = await this.modalCtl.create({
       component: CancellationPage
@@ -110,16 +104,14 @@ export class ExploreDetailsPage implements OnInit {
     });
     return await commsPolicy.present();
   }
-  async presentRequirements(){
-    const requirements = await this.modalCtl.create({
-      component: RequirementsPage
-    });
-    return await requirements.present();
-  }
 
-  async startBooking(){
+  async startBooking() {
     const modal = await this.modalCtl.create({
-      component: BookingPage
+      component: BookingPage,
+      componentProps: {
+        packageInfo: this.packageJazz,
+        'packageId': this.route.snapshot.paramMap.get('id')
+      }
     });
     return await modal.present();
   }

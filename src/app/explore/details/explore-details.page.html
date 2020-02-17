@@ -4,24 +4,17 @@
       <ion-back-button defaultHref="app/explore"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-       <ion-button (click)="presentshareSheet()">
-         <ion-icon slot="end" name="share"></ion-icon>
-       </ion-button>
        <ion-button color="danger" expand="block" (click)="startBooking()">Book now</ion-button>
       </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="travel-details-content">
+
   <ion-row class="image-row">
     <ion-col size="12">
-      <app-image-shell [mode]="'cover'" animation="spinner" class="add-overlay details-image" [src]="details?.image">
+      <app-image-shell [mode]="'cover'" animation="spinner" class="details-image" [src]="(package | async)?.image">
         <app-aspect-ratio [ratio]="{w:64, h:50}">
-          <div class="icon-wrapper">
-            <app-aspect-ratio [ratio]="{w: 47, h: 25}">
-              <app-image-shell [src]="details?.icon" class="details-icon"></app-image-shell>
-            </app-aspect-ratio>
-          </div>
         </app-aspect-ratio>
       </app-image-shell>
     </ion-col>
@@ -29,78 +22,56 @@
   <ion-row class="description-row">
     <ion-col size="12">
       <h3 class="details-name">
-        <app-text-shell animation="bouncing" [data]="details?.name"></app-text-shell>
+        {{ (package | async)?.name }}
       </h3>
       <p class="details-short-description">
-        Deep and engaging cooking lessons for you and your family
+        <app-text-shell animation="bouncing" [data]="(package | async)?.shortDesc"></app-text-shell>
       </p>
-      <p class="details-short-description">
-        Learn traditional recipes from a variety of cultures
-      </p>
-      <p class="details-short-description">
-          Experience a one-on-one approach that ensures you get it right
-        </p>
     </ion-col>
 
-   <!--  <ion-col size="12">
-        <ion-row class="details-tags">
-          <ion-col class="tag-wrapper" *ngFor="let tag of details?.tags">
-            <span class="item-tag">
-              <app-text-shell [data]="tag"></app-text-shell>
-            </span>
-          </ion-col>
-        </ion-row>
-      </ion-col> -->
-
-    <ion-col class="meta" size="12">
+    <!-- <ion-col class="meta" size="12">
       <ion-row>
         <ion-col size="6">
           <ion-icon name="timer"></ion-icon>
           <h5 class="metaLabel">Duration</h5>
-          <p class="metaValue">4.5 hours</p>
+          <p class="metaValue"><app-text-shell animation="bouncing" [data]="details?.duration"></app-text-shell></p>
         </ion-col>
         <ion-col size="6">
           <ion-icon name="people" mode="md"></ion-icon>
           <h5 class="metaLabel">Group Size</h5>
-          <p class="metaValue">Up to 6 people</p>
+          <p class="metaValue"><app-text-shell animation="bouncing" [data]="details?.groupSize"></app-text-shell></p>
           </ion-col>
       </ion-row>
       <ion-row>
           <ion-col size="6">
               <ion-icon name="chatbubbles" mode="md"></ion-icon>
               <h5 class="metaLabel">Taught In</h5>
-              <p class="metaValue">English, Luganda, Runyankore</p>
+              <p class="metaValue"><app-text-shell animation="bouncing" [data]="details?.languages"></app-text-shell></p>
           </ion-col>
           <ion-col size="6">
-              <ion-icon name="chatbubbles" mode="md"></ion-icon>
+              <ion-icon name="albums" mode="md"></ion-icon>
               <h5 class="metaLabel">Cuisine</h5>
-              <p class="metaValue">Local, chinese, mexican, indian</p>
+              <p class="metaValue"><app-text-shell animation="bouncing" [data]="details?.cuisine"></app-text-shell></p>
             </ion-col>
         </ion-row>
-    </ion-col>
+    </ion-col> -->
     
     <ion-col size="12">
         <h3 class="details-title">
-            <app-text-shell animation="bouncing" [data]="details?.title1"></app-text-shell>
+            What you'll do
           </h3>
       <p class="details-description">
-        <app-text-shell animation="bouncing" lines="6" [data]="details?.fullDescription"></app-text-shell>
+        <app-text-shell animation="bouncing" lines="6" [data]="details?.overview"></app-text-shell>
       </p>
       <ion-button expand="block" color="primary" fill="outline" (click)="presentAskModal()">Ask a question</ion-button> 
     </ion-col>
     
     <ion-col size="12">
         <h3 class="details-title">
-            <app-text-shell animation="bouncing" [data]="details?.title5"></app-text-shell>
+            Things to keep in mind
         </h3>
 
         <ion-list>
-
-            <ion-item (click)="presentDietaryPreferences()" detail>
-                <ion-label>
-                 Dietary preferences
-                </ion-label>
-              </ion-item>
 
           <ion-item (click)="presentCancellationPolicy()" detail>
             <ion-label>
@@ -111,12 +82,6 @@
           <ion-item (click)="presentCommsPolicy()" detail>
               <ion-label>
                Communication policy
-              </ion-label>
-          </ion-item>
-
-          <ion-item (click)="presentRequirements()" detail>
-              <ion-label>
-               Client requirements
               </ion-label>
           </ion-item>
         

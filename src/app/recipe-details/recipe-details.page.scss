@@ -1,0 +1,68 @@
+:host-context(app-recipe-details) {
+
+  .recipe-content {
+    padding: 5px 15px;
+  }
+
+    p {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    .intro {
+      padding: 5px 20px;
+    }
+
+    ion-label {
+      font-weight: bold;
+    }
+    .post-content {
+      white-space: pre-wrap;
+    }
+    .recipeName {
+      color: var(--ion-color-primary);
+    }
+    .perIngredient {
+      padding: 5px 0px;
+      border-bottom: 1px solid #f2f2f2;
+      font-size: 14px;
+    }
+    .perIngredient:last-child {
+      padding-bottom: 0px;
+      border-bottom: 0px;
+    }
+
+    .preparation {
+      background: #999;
+    }
+    .stepNumber {
+      background: var(--ion-color-dark);
+      border-radius: 0.8em;
+      -moz-border-radius: 0.8em;
+      -webkit-border-radius: 0.8em;
+      color: #ffffff;
+      display: inline-block;
+      font-weight: bold;
+      line-height: 1.6em;
+      margin-right: 5px;
+      text-align: center;
+      width: 1.6em; 
+    }
+    .stepInfo {
+      background: #f2f2f2;
+      padding: 20px 20px;
+      margin: 10px 0px;
+      border-radius: 5px;
+      font-weight: 200;
+    }
+    
+    .amount {
+      display: block;
+      margin: auto;
+      text-align: center;
+      padding: 0px 10px;
+    }
+  
+  }
+  

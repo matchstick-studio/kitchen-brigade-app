@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="app/explore"></ion-back-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+          <ion-button class="ion-float-end" fill="clear" size="small">
+              <ion-icon slot="icon-only" icon-small name="heart-empty"></ion-icon>
+            </ion-button >
+      
+          <ion-button class="ion-float-end" fill="clear" size="small">
+            <ion-icon slot="icon-only" icon-small  name="share-alt" ></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+
+    <div class="intro">
+        <h1>
+          <app-text-shell animation="bouncing" [data]="title" lines="2"></app-text-shell>
+        </h1>
+        <p>
+            <app-text-shell animation="bouncing" [data]="inBrief" lines="4"></app-text-shell>
+        </p>
+    </div>
+
+        <app-aspect-ratio [ratio]="{w:1, h:1}">
+          <app-image-shell [mode]="'cover'" animation="spinner" class="item-image" [src]="image"></app-image-shell>
+        </app-aspect-ratio>
+
+    <div class="recipe-content">
+
+        <div class="ingredients" *ngIf="ingredients">
+            <p><ion-icon slot="start" name="timer"></ion-icon> Preparation time: Under {{ cookingTime }} mins</p>
+              <h6>Ingredients for {{ servingSize }} servings</h6>
+            <ion-item>
+          <!--  <ion-label>INGREDIENTS</ion-label> -->
+              <ion-grid>
+              <ion-row *ngFor="let ingredient of ingredients" class="perIngredient">
+              <ion-col>
+                {{ ingredient.size }}
+              </ion-col>
+              <ion-col>
+                  {{ ingredient.name }}
+              </ion-col>
+              </ion-row>
+          </ion-grid>
+          </ion-item>
+          </div>
+
+          <h2>Steps</h2>
+
+          <div class="preparation">
+              <ion-item *ngIf="steps">
+                <ion-grid>
+                  <ion-row *ngFor="let step of steps">
+                    <ion-col class="stepInfo">
+                        <span class="stepNumber">{{ step.step }}</span>
+                      {{ step.description }}
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+            </div>
+
+    </div>
+  
+  </ion-content>

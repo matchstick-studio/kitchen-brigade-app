@@ -1,0 +1,14 @@
+:host {
+    --page-margin: var(--app-fair-margin);
+    --page-background: var(--app-background);
+  
+    --page-color: var(--ion-color-secondary);
+  }
+
+.booking {
+    padding: 0px 15px;
+}
+
+ion-item-group .bookingType {
+  padding: 5px 0px;
+}

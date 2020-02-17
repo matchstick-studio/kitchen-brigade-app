@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -9,25 +9,21 @@ import { IonicModule } from '@ionic/angular';
 import { ComponentsModule } from '../../components/components.module';
 
 import { ExploreDetailsPage } from './explore-details.page';
-import { ExploreDetailsResolver } from './explore-details.resolver';
 import { ExploreService } from '../explore.service';
+import { BookingService } from '../../services/firestore/booking.service';
+import { ProfileService } from '../../services/profile.service';
 
 import { AskPage } from '../ask/ask.page';
 
-import { DietaryPage } from '../important/dietary/dietary.page';
 import { CancellationPage } from '../important/cancellation/cancellation.page';
 import { CommunicationPage } from '../important/communication/communication.page';
-import { RequirementsPage } from '../important/requirements/requirements.page';
 
 import { BookingPage } from '../../booking/booking.page'; 
 
 const routes: Routes = [
   {
     path: '',
-    component: ExploreDetailsPage,
-    resolve: {
-      data: ExploreDetailsResolver
-    }
+    component: ExploreDetailsPage
   }
 ];
 
@@ -35,6 +31,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes),
     ComponentsModule,
@@ -43,22 +40,19 @@ const routes: Routes = [
   declarations: [
     ExploreDetailsPage,
     AskPage,
-    DietaryPage,
     CancellationPage,
     CommunicationPage,
-    RequirementsPage,
     BookingPage
   ],
   providers: [
-    ExploreDetailsResolver,
-    ExploreService
+    ExploreService,
+    BookingService,
+    ProfileService
   ],
   entryComponents: [
     AskPage,
-    DietaryPage,
     CancellationPage,
     CommunicationPage,
-    RequirementsPage,
     BookingPage
   ]
 })

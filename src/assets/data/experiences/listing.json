@@ -4,41 +4,66 @@
       "id": 1,
       "slug": "cooking-class",
       "image": "./assets/sample-images/travel/Travel1-64.47.png",
-      "icon": "./assets/sample-images/travel/TravelIcon1.png",
       "name": "Cooking Classes ",
-      "description": "Every Sunday from early morning until three in the afternoon enjoy the biggest market in Montevideo."
+      "shortDesc": "All cooking experiences with Kitchen Brigade chefs are vetted for quality, so you can learn authentic recipes and feed your appetite for culture.",
+      "longDesc": "",
+      "overview": "",
+      "duration": "",
+      "groupSize": "",
+      "languages": "",
+      "cuisine": ""
     },
     {
       "id": 2,
       "slug": "personal-chef",
       "image": "./assets/sample-images/travel/Travel2-64.47.png",
-      "icon": "./assets/sample-images/travel/TravelIcon2.png",
       "name": "Personal Chef",
-      "description": "22 kilometers long avenue along the coast of Rio de la Plata stretching throughout all of Montevideo."
+      "shortDesc": "22 kilometers long avenue along the coast of Rio de la Plata stretching throughout all of Montevideo.",
+      "longDesc": "",
+      "overview": "",
+      "duration": "5 hours",
+      "groupSize": "",
+      "languages": "",
+      "cuisine": ""
     },
     {
       "id": 3,
       "slug": "party",
       "image": "./assets/sample-images/travel/Travel3-64.47.png",
-      "icon": "./assets/sample-images/travel/TravelIcon3.png",
       "name": "Party Platter",
-      "description": "It's warm and relaxed atmosphere, making it a favorite haunt for tourists, businessmen and cultural figures."
+      "shortDesc": "22 kilometers long avenue along the coast of Rio de la Plata stretching throughout all of Montevideo.",
+      "longDesc": "",
+      "overview": "",
+      "duration": "",
+      "groupSize": "",
+      "languages": "",
+      "cuisine": ""
     },
     {
       "id": 4,
       "slug": "barbeque",
       "image": "./assets/sample-images/travel/Travel4-64.47.png",
-      "icon": "./assets/sample-images/travel/TravelIcon4.png",
       "name": "Barbeque",
-      "description": "Cobbled and irregular streets straight from history, and a unique landscape with spectacular view of the river."
+      "shortDesc": "22 kilometers long avenue along the coast of Rio de la Plata stretching throughout all of Montevideo.",
+      "longDesc": "",
+      "overview": "",
+      "duration": "",
+      "groupSize": "",
+      "languages": "",
+      "cuisine": ""
     },
     {
       "id": 5,
       "slug": "mixology",
       "image": "./assets/sample-images/travel/Travel5-64.47.png",
-      "icon": "./assets/sample-images/travel/TravelIcon5.png",
       "name": "Mixology",
-      "description": "Casapueblo is the former summer home of Uruguayan artist Carlos Paez Vilaró and is now an art gallery, museum and hotel"
+      "shortDesc": "22 kilometers long avenue along the coast of Rio de la Plata stretching throughout all of Montevideo.",
+      "longDesc": "",
+      "overview": "",
+      "duration": "",
+      "groupSize": "",
+      "languages": "",
+      "cuisine": ""
     }
   ]
 }

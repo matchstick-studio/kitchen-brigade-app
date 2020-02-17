@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="app/explore"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+        <ion-button class="ion-float-end" fill="clear" size="small" (click)="toggleFavorite()">
+            <ion-icon *ngIf="!isFavorite" slot="icon-only" name="heart-empty"></ion-icon>
+            <ion-icon *ngIf="isFavorite" slot="icon-only" name="heart"></ion-icon>
+          </ion-button >
+    
+        <ion-button class="ion-float-end" fill="clear" size="small">
+          <ion-icon slot="icon-only" icon-small  name="share-alt" ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <app-aspect-ratio [ratio]="{w:1, h:1}">
+    <app-image-shell [mode]="'cover'" animation="spinner" class="item-image" [src]="image"></app-image-shell>
+    </app-aspect-ratio>
+    <div class="post-content">
+
+      <h1>
+        <app-text-shell animation="bouncing" [data]="title" lines="2"></app-text-shell>
+      </h1>
+
+    <p [innerHTML]="content"></p>
+
+
+  </div>
+</ion-content>

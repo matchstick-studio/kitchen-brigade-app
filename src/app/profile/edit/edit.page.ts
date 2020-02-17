@@ -17,10 +17,13 @@ export class EditPage implements OnInit {
   public userProfile: UserProfile;
 
   cameraOptions: CameraOptions = {
-    quality: 20,
+    quality: 100,
     destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
-    mediaType: this.camera.MediaType.PICTURE
+    mediaType: this.camera.MediaType.PICTURE,
+    targetWidth: 1000,
+    targetHeight: 1000,
+    sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
   }
 
   user: any;
@@ -30,6 +33,9 @@ export class EditPage implements OnInit {
   lastName: string = '';
   phone: string = '';
   error: string;
+  image = '../../../assets/images/camera.png';
+  imagePath: string;
+  task: any;
 
   constructor(
     public loadingController: LoadingController,
@@ -210,5 +216,20 @@ export class EditPage implements OnInit {
     });
     return await alert.present();
   }
+
+  async addPhoto() {
+    const base64 = await this.captureImage();
+    this.createUploadTask(base64);
+    }
+  
+  async captureImage() {
+    return await this.camera.getPicture(this.cameraOptions);
+    }
+    
+  createUploadTask(file: string): void {
+      this.imagePath = `users/user_${ new
+     Date().getTime() }.jpg`;
+      this.image = 'data:image/jpg;base64,' + file;
+    }
 
 }

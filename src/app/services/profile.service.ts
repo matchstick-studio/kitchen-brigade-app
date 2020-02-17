@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
-  AngularFirestoreDocument
+  AngularFirestoreDocument,
+  DocumentReference
 } from '@angular/fire/firestore';
 import { AuthService } from '../services/firestore/firebase-authentication.service';
 import { Observable } from 'rxjs';
@@ -24,7 +25,7 @@ export class ProfileService {
   async getUserProfile(): Promise<Observable<UserProfile>> {
     const user: firebase.User = await this.authService.getUser();
     this.currentUser = user;
-    this.userProfile = this.firestore.doc(`userProfile/${user.uid}`);
+    this.userProfile = this.firestore.doc(`users/${user.uid}`);
     return this.userProfile.valueChanges();
   }
 
@@ -40,9 +41,9 @@ export class ProfileService {
     return this.userProfile.update({ phone });
   }
 
-  updatePicture(picture: string): Promise<void> {
+  /* updatePicture(picture: string): Promise<void> {
     return this.userProfile.update({ picture });
-  }
+  } */
 
   async updateEmail(newEmail: string, password: string): Promise<void> {
     const credential: firebase.auth.AuthCredential = firebase.auth.EmailAuthProvider.credential(
@@ -73,4 +74,10 @@ export class ProfileService {
       console.error(error);
     }
   }
+
+  async updateUserProfile(firstname: string, lastname: string, phone: string) {
+    const user: firebase.User = await this.authService.getUser();
+    return await this.userProfile.update({ firstname, lastname, phone });
+  }
+
 }

@@ -1,36 +1,28 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Package } from '../../models/package';
 
-import { ExploreListingModel } from './explore-listing.model';
+import { ExploreService  } from '../explore.service';
 
 @Component({
   selector: 'app-explore-listing',
   templateUrl: './explore-listing.page.html',
   styleUrls: [
-    './styles/explore-listing.page.scss',
-    './styles/explore-listing.shell.scss'
+    './styles/explore-listing.page.scss'
   ]
 })
 export class ExploreListingPage implements OnInit {
-  listing: ExploreListingModel;
 
-  @HostBinding('class.is-shell') get isShell() {
-    return (this.listing && this.listing.isShell) ? true : false;
-  }
+  public packageList;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    public exploreService: ExploreService
+    ) { }
 
-  ngOnInit(): void {
-    this.route.data.subscribe((resolvedRouteData) => {
-      const listingDataStore = resolvedRouteData['data'];
-
-      listingDataStore.state.subscribe(
-        (state) => {
-          this.listing = state;
-        },
-        (error) => {}
-      );
-    },
-    (error) => {});
+  ngOnInit() {
+    this.packageList = this.exploreService.getPackages().valueChanges(
+      {idField: 'packageId'}
+    );
   }
 }
