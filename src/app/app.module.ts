@@ -34,6 +34,9 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { SafariViewController } from '@ionic-native/safari-view-controller/ngx';
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -69,6 +72,8 @@ export function createTranslateLoader(http: HttpClient) {
     UtilService,
     Camera,
     File,
+    InAppBrowser,
+    SafariViewController,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: FirestoreSettingsToken, useValue: {} }
   ],

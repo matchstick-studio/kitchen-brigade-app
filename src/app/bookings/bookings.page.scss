@@ -9,6 +9,23 @@
     padding: 0px 15px;
 }
 
-ion-item-group .bookingType {
-  padding: 5px 0px;
+.bookingType {
+  margin: 15px 0;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.bookingType h3 {
+  margin: 5px 0;
+
+  &.date {
+    color: var(--ion-color-primary);
+  }
+}
+.bookingType p {
+  margin: 5px 0;
+  font-size: 18px;
+}
+.bookingType p.desc {
+  font-size: 14px!important;
 }

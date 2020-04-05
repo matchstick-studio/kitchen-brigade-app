@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Your Bookmarks</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+
+<ion-content>
+
+    <ng-container *ngIf="userFavs">
+        
+      <ion-row *ngFor="let fav of userFavs">
+        <ion-col class="favorite" size="12">
+          <h4 class="booking-type">{{ fav.id }}</h4>
+      </ion-col>  
+        </ion-row>
+              
+
+      </ng-container>
+
+</ion-content>

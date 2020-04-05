@@ -1,33 +1,55 @@
 <ion-content class="ion-padding">
 
   <div *ngIf="userProfile?.firstname" routerLink="edit">
-        <img class="profilePic" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
       <h1 class="userName">Hi {{ userProfile?.firstname }}</h1>
     </div>
     <div class="clearfix"></div>
       
-  <ion-list class="links" lines="inset">
+    <ion-list class="inputs-list" lines="full">
 
-    <ion-item routerLink="edit">
-      <h5 class="soft">Edit profile</h5>
-    </ion-item>
-      <ion-item routerLink="">
-          <h5 class="soft">Refer a friend</h5>
+        <ion-item class="input-item">
+          <ion-label position="stacked">First Name</ion-label>
+          <ion-input type="text" readonly>{{ userProfile?.firstname }}</ion-input>
+          <ion-button (click)="updateFirstName()" slot="end" fill="clear">edit</ion-button>
         </ion-item>
-        <ion-item routerLink="">
-            <h5 class="soft">FAQs and help</h5>
+
+        <ion-item class="input-item">
+            <ion-label position="stacked">Last Name</ion-label>
+            <ion-input type="text" readonly>{{ userProfile?.lastname }}</ion-input>
+            <ion-button (click)="updateLastName()" slot="end" fill="clear">edit</ion-button>
           </ion-item>
-          <ion-item routerLink="">
-              <h5 class="soft">Give us feedback</h5>
+      
+        <ion-item class="input-item">
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="email" readonly>{{ userProfile?.email }}</ion-input>
+          <ion-button (click)="updateEmail()" slot="end" fill="clear">edit</ion-button>
+        </ion-item>
+        
+        <ion-item class="input-item">
+            <ion-label position="stacked">Phone</ion-label>
+            <ion-input type="text" readonly>{{ userProfile?.phone }}</ion-input>
+            <ion-button (click)="updatePhone()" slot="end" fill="clear">edit</ion-button>
+          </ion-item>
+
+          <ion-item class="input-item">
+              <ion-label position="stacked">Password</ion-label>
+              <ion-input type="text" readonly>***********</ion-input>
+              <ion-button (click)="updatePassword()" slot="end" fill="clear">edit</ion-button>
             </ion-item>
-            <ion-item routerLink="">
-                <h5 class="soft">Rate the app</h5>
-              </ion-item>
-            <ion-item routerLink="">
-                <h5 class="soft">Terms and conditions</h5>
-              </ion-item>
-            
-  </ion-list>
+
+      </ion-list>
+
+      <ion-list class="legal" lines="none">
+        <ion-list-header>
+          <ion-label>Legal</ion-label>
+        </ion-list-header>
+        <ion-item button (click)="openPage('https://kitchenbrigade.org/privacy-policy/')" detail>
+         Privacy Policy
+        </ion-item>
+        <ion-item button (click)="openPage('https://kitchenbrigade.org/about/')" detail>
+        About KitchenBrigade
+          </ion-item>
+      </ion-list>
 
   <ion-button style="margin-top: 50px" fill="solid" expand="block" color="danger" expand="block" (click)="logOut()">
           Log out

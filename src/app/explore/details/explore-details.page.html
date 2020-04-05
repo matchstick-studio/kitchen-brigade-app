@@ -63,7 +63,7 @@
       <p class="details-description">
         <app-text-shell animation="bouncing" lines="6" [data]="details?.overview"></app-text-shell>
       </p>
-      <ion-button expand="block" color="primary" fill="outline" (click)="presentAskModal()">Ask a question</ion-button> 
+      <ion-button color="primary" expand="block" (click)="startBooking()">Book now</ion-button>
     </ion-col>
     
     <ion-col size="12">
@@ -88,10 +88,7 @@
           </ion-list>
      
     </ion-col>
-
-    <ion-col size="12">
-        <ion-button color="danger" expand="block" (click)="startBooking()">Book now</ion-button>
-    </ion-col>
+    
   </ion-row>
   
 </ion-content>

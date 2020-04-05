@@ -19,7 +19,17 @@ const routes: Routes = [
           {
             path: 'details/:id',
             loadChildren: () => import('../explore/details/explore-details.module').then(m => m.ExploreDetailsPageModule)
-          }
+          },
+        ]
+      },
+      {
+        path: 'posts',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+            import('../posts/posts.module').then(m => m.PostsPageModule)
+          },
         ]
       },
       {
@@ -29,6 +39,16 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
             import('../post-details/post-details.module').then(m => m.PostDetailsPageModule)
+          },
+        ]
+      },
+      {
+        path: 'recipes',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+            import('../recipes/recipes.module').then(m => m.RecipesPageModule)
           },
         ]
       },
@@ -48,19 +68,15 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => import('../bookings/bookings.module').then(m => m.BookingsPageModule)
-          },
-          {
-            path: 'details/:id',
-            loadChildren: () => import('../bookings/details/booking-details.module').then(m => m.BookingDetailsPageModule)
           }
         ]
       },
       {
-        path: 'notifications',
+        path: 'saved',
         children: [
           {
             path: '',
-            loadChildren: () => import('../notifications/notifications.module').then(m => m.NotificationsPageModule)
+            loadChildren: () => import('../saved/saved.module').then(m => m.SavedPageModule)
           }
         ]
       },
@@ -72,11 +88,6 @@ const routes: Routes = [
             loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
           }
         ]
-      },
-      {
-        path: 'profile/edit',
-            loadChildren: () => 
-            import('../profile/edit/edit.module').then(m => m.EditPageModule)
       },
     ]
   },

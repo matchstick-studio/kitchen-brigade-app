@@ -1,12 +1,13 @@
 <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="app/explore"></ion-back-button>
+        <ion-back-button defaultHref="app/recipes"></ion-back-button>
       </ion-buttons>
       <ion-buttons slot="end">
-          <ion-button class="ion-float-end" fill="clear" size="small">
-              <ion-icon slot="icon-only" icon-small name="heart-empty"></ion-icon>
-            </ion-button >
+          <ion-button class="ion-float-end" fill="clear" size="small" (click)="toggleFavorite()">
+            <ion-icon *ngIf="!isFavorite" slot="icon-only" name="heart-empty"></ion-icon>
+            <ion-icon *ngIf="isFavorite" slot="icon-only" name="heart"></ion-icon>
+          </ion-button >
       
           <ion-button class="ion-float-end" fill="clear" size="small">
             <ion-icon slot="icon-only" icon-small  name="share-alt" ></ion-icon>
@@ -34,7 +35,7 @@
 
         <div class="ingredients" *ngIf="ingredients">
             <p><ion-icon slot="start" name="timer"></ion-icon> Preparation time: Under {{ cookingTime }} mins</p>
-              <h6>Ingredients for {{ servingSize }} servings</h6>
+              <h3>Ingredients for {{ servingSize }} servings</h3>
             <ion-item>
           <!--  <ion-label>INGREDIENTS</ion-label> -->
               <ion-grid>
@@ -50,10 +51,11 @@
           </ion-item>
           </div>
 
-          <h2>Steps</h2>
+          <div *ngIf="steps">
 
-          <div class="preparation">
-              <ion-item *ngIf="steps">
+              <h3>How to prepare</h3>
+
+              <ion-item class="preparation">
                 <ion-grid>
                   <ion-row *ngFor="let step of steps">
                     <ion-col class="stepInfo">

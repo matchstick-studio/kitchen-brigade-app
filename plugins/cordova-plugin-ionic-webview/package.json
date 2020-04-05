@@ -1,27 +1,27 @@
 {
-  "_from": "cordova-plugin-ionic-webview@^4.0.0",
+  "_from": "cordova-plugin-ionic-webview@latest",
   "_id": "cordova-plugin-ionic-webview@4.1.3",
   "_inBundle": false,
   "_integrity": "sha512-hlrUF0kLjjEkZmpYlLJO0NnXmVjMmQ3MOZVXm1ytDihLPKHklYCOpCvjA5Wz3hJrPD1shFEsqi/SPnp873AsdQ==",
   "_location": "/cordova-plugin-ionic-webview",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "tag",
     "registry": true,
-    "raw": "cordova-plugin-ionic-webview@^4.0.0",
+    "raw": "cordova-plugin-ionic-webview@latest",
     "name": "cordova-plugin-ionic-webview",
     "escapedName": "cordova-plugin-ionic-webview",
-    "rawSpec": "^4.0.0",
+    "rawSpec": "latest",
     "saveSpec": null,
-    "fetchSpec": "^4.0.0"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#USER",
+    "/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-4.1.3.tgz",
   "_shasum": "7f3963208708951fedd975c0808a5d27382812a7",
-  "_spec": "cordova-plugin-ionic-webview@^4.0.0",
+  "_spec": "cordova-plugin-ionic-webview@latest",
   "_where": "/Users/kollin/Desktop/Kitchen Brigade/kitchen-brigade-app",
   "author": {
     "name": "Ionic Team"

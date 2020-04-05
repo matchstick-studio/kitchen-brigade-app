@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WordpressService } from '../services/wordpress.service';
-import { FavoritesService } from '../services/favorites.service'
+import { FavoritesService } from '../services/favorites.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import * as firebase from 'firebase';

@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>All Recipes</ion-title>
+      </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+      <ion-col size="12" *ngFor="let item of getKeys(thumbs)" (click)="goTo(thumbs.get(item).id)">
+        <div class="recipe ion-text-start">
+            <app-aspect-ratio [ratio]="{w:1, h:1}">
+                <app-image-shell [mode]="'cover'" animation="spinner" class="item-image" [src]="thumbs.get(item).image"></app-image-shell>
+              </app-aspect-ratio>
+            <h5 class="recipeTitle">
+                <app-text-shell animation="bouncing" [data]="thumbs.get(item).title" lines="2"></app-text-shell>
+            </h5>
+          </div>
+        </ion-col>
+      </ion-row>    
+</ion-content>
+
+<ion-footer>
+    <ion-row>
+        <ion-col size="12">
+            <ion-button *ngIf="loaded === true" (click)="next()" size="default" fill="clear">More recipes</ion-button>
+        </ion-col>
+    </ion-row>
+  </ion-footer>

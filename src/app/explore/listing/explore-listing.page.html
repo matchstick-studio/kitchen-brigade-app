@@ -10,7 +10,7 @@
 
     <ion-row>
         <ion-col size="9">
-            <h4>What experience are you looking for, Collin?</h4>
+            <h4>What experience are you looking for, {{ userProfile?.firstname }}?</h4>
         </ion-col>
     </ion-row>
 
@@ -18,14 +18,21 @@
   <ion-row>
       <ion-col size="12" *ngFor="let package of packageList | async" routerLink="details/{{ package.packageId }}">
         <img class="package-img" src="{{ package.image }}" />
-        <h3 class="package-title">{{ package.name }}</h3>
-        <p class="package-sum">{{ package.shortDesc }}</p>
+        <h3 class="package-title">
+        <app-text-shell animation="bouncing" [data]="package?.name" lines="2"></app-text-shell>
+        </h3>
+        <p class="package-sum">
+          <app-text-shell animation="bouncing" [data]="package?.shortDesc" lines="2"></app-text-shell>
+        </p>
       </ion-col>
   </ion-row>
 
   <ion-row>
       <ion-col size="12">
-          <h3>Fresh recipes</h3>
+          <ion-list-header>
+              <h4>Fresh recipes</h4>
+            <ion-button size="small" fill="clear" routerLink="/app/recipes">View more</ion-button>
+          </ion-list-header>
           <app-recipes></app-recipes>
       </ion-col>
         
@@ -33,7 +40,10 @@
 
   <ion-row>
       <ion-col size="12">
-        <h3>Practical tips</h3>
+          <ion-list-header>
+              <h4>Practical Tips</h4>
+            <ion-button size="small" fill="clear" routerLink="/app/posts">View more</ion-button>
+          </ion-list-header>
       <app-posts></app-posts>
     </ion-col>
   </ion-row>

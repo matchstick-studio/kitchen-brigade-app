@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>All Posts</ion-title>
+      </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Search Posts"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-row>
+      <ion-col size="6" *ngFor="let item of getKeys(thumbs)" (click)="goTo(thumbs.get(item).id)">
+        <div class="post ion-text-start">
+            <img class="postImg" [src]="thumbs.get(item).image" />
+            <h5 class="postTitle">{{thumbs.get(item).title}}</h5>
+        </div>
+      </ion-col> 
+      
+    </ion-row> 
+
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+      <ion-col size="12">
+          <ion-button *ngIf="loaded === true" (click)="next()" size="default" fill="clear">More posts</ion-button>
+      </ion-col>
+  </ion-row>
+</ion-footer>

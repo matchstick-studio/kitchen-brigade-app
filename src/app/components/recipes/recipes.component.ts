@@ -53,7 +53,7 @@ export class RecipesComponent implements OnInit {
         console.log('Recipe data:', data);
         for (let res of data) {
           if(!this.thumbs.has(res.id)){
-            this.thumbs.set(res.id, {id: res.id, title: res.title.rendered, image: res._embedded['wp:featuredmedia']['0'].source_url, content: res.content.rendered});
+            this.thumbs.set(res.id, {id: res.id, title: res.title.rendered, image: res.fimg_url});
           }        
         }
         this.loading = false;

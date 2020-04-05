@@ -1,12 +1,8 @@
 export interface Package {
     id: string;
-    packageName: string;
+    packageId: string;
+    name: string;
     shortDesc: string;
-    longDesc: string;
     image: string; 
-    duration: string;
-    groupSize: string;
-    languages: string;
-    cuisine: string;
     overview: string;
 }

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Your Bookings</ion-title>
+    <ion-title>My Bookings</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,13 +8,35 @@
 
     <ng-container *ngIf="userBookings">
 
+
+        <ion-row class="bookingType" *ngFor="let booking of userBookings">
+
+            <ion-col size="4">
+                <h3 class="date">{{ booking.date | date: 'MMMM d' }}</h3>
+                <p>{{ booking.date | date: 'EEEE' }}<br>{{ booking.time | date: 'shortTime' }}</p>
+            </ion-col>
+            <ion-col size="8">
+              <!-- Hack to get package information since nested collections can't be accessed and queried with other collections -->
+                <ng-template [ngIf]="booking.packageId == 'HGjoFKLN0buOTT6dklFm'"><h3>Event Catering</h3><p class="desc">Catering for an intimate gathering</p></ng-template>
+                <ng-template [ngIf]="booking.packageId == 'fQbvwckD0NESRh4NQEzu'"><h3>Kitchen Consultation</h3><p class="desc">Conversations on your home kitchen</p></ng-template>
+                <ng-template [ngIf]="booking.packageId == 'lO96AoCTO3xN4a3Fdpoc'"><h3>Private Party</h3><p class="desc">Perfect delicacies in the comfort of your home</p></ng-template>
+                <ng-template [ngIf]="booking.packageId == 'oZaS6I0T7Jvy9qwTbxMK'"><h3>Destination Chef</h3><p class="desc">A memorable experience for your next safari</p></ng-template>
+                <ng-template [ngIf]="booking.packageId == 'rxbBdl2jvolUR5J4K5GB'"><h3>Cooking Class</h3><p class="desc">Learn to make fantastic meals in your kitchen.</p></ng-template>
+
+                <!-- Get booking status. Also hacked to show confirmed if empty and whatever if there's info -->
+                <div *ngIf="booking.status == ''; else elseBlock"><ion-badge color="danger">CONFIRMED</ion-badge></div>
+                <ng-template #elseBlock><ion-badge color="dark">{{ booking.status }}</ion-badge></ng-template>
+            </ion-col>
+        </ion-row>
+
+        
   
-        <ion-item-group>
+       <!--  <ion-item-group>
             <ion-item-divider sticky>
               <ion-label>Upcoming</ion-label>
             </ion-item-divider>
               <ion-row class="bookingType" *ngFor="let booking of userBookings">
-                  <ion-col *ngIf="(booking.date | date:'fullDate') < (today | date:'fullDate')" class="booking" size="12" routerLink="details/{{ booking.id }}">
+                  <ion-col *ngIf="(booking.date | date:'fullDate') > (today | date:'fullDate')" class="booking" size="12">
                     <h4 class="booking-type">{{ booking.id }}</h4>
                     {{ booking.packageId }}
                     <p>{{ booking.date | date }} at {{ booking.time | date: 'shortTime' }}</p>
@@ -28,13 +50,13 @@
                 <ion-label>In the past</ion-label>
               </ion-item-divider>
               <ion-row class="bookingType" *ngFor="let booking of userBookings">
-                    <ion-col *ngIf="(booking.date | date:'fullDate') > (today | date:'fullDate')" class="booking" size="12" routerLink="details/{{ booking.id }}">
+                    <ion-col *ngIf="(booking.date | date:'fullDate') < (today | date:'fullDate')" class="booking" size="12" routerLink="details/{{ booking.id }}">
                         <h4 class="booking-type">{{ booking.id }}</h4>
                         {{ booking.packageId }}
                         <p>{{ booking.date | date }} at {{ booking.time | date: 'shortTime' }}</p>
                       </ion-col>
                 </ion-row>
-            </ion-item-group>
+            </ion-item-group> -->
 
       </ng-container>
   

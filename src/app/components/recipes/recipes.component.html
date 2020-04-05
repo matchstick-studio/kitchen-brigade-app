@@ -3,7 +3,7 @@
     <ion-slide *ngFor="let item of getKeys(thumbs)" (click)="goTo(thumbs.get(item).id)">
         <div class="recipe ion-text-start">
             <img class="recipeImg" [src]="thumbs.get(item).image" />
-            <h5 class="recipeTitle">{{thumbs.get(item).title}}</h5>
+            <h5 class="recipeTitle">{{ thumbs.get(item).title }}</h5>
           </div>
       </ion-slide>    
 </ion-slides>
