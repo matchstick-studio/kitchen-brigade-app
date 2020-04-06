@@ -8,10 +8,10 @@
   --page-swiper-pagination-height: 18px;
   --page-pagination-bullet-size: 10px;
 
-  --page-first-slide-background: #c1ebff;
-  --page-second-slide-background: #a9ebd2;
-  --page-third-slide-background: #f0cbe5;
-  --page-last-slide-background: #eef3ff;
+  --page-first-slide-background: #ffffff;
+  --page-second-slide-background: #ffffff;
+  --page-third-slide-background: #ffffff;
+  --page-last-slide-background: #ffffff;
 
   --page-vector-decoration-fill: var(--ion-color-light-shade);
 }
@@ -104,18 +104,19 @@ ion-content {
     transform: translate3d(0px, 0px, 0px);
 
     .info-wrapper {
-      margin: calc(var(--page-margin) * -1) var(--page-margin) 0px;
-      text-align: left;
+      margin: 30px;
+      text-align: center;
 
       .info-title {
         margin: 0px;
         margin-bottom: var(--page-margin);
-        color: var(--ion-color-dark);
+        color: var(--ion-color-primary);
       }
 
       .info-paragraph {
-        color: var(--ion-color-medium-shade);
-        font-size: 14px;
+        color: var(--ion-color-dark);
+        font-size: 16px;
+        font-weight: 300;
         margin: 0px 0px calc(var(--page-margin) / 2);
 
         &:last-child {

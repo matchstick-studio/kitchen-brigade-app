@@ -58,4 +58,15 @@ ngOnInit() {
   this.loadRecipes();
 }
 
+ionRefresh(event) {
+  console.log('Pull Event Triggered!');
+  this.loadRecipes();
+  setTimeout(() => {
+    console.log('Async operation has ended');
+
+    //complete()  signify that the refreshing has completed and to close the refresher
+    event.target.complete();
+  }, 2000);
+}
+
 }
