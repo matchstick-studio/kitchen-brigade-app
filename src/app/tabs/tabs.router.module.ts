@@ -63,20 +63,20 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'bookings',
-        children: [
-          {
-            path: '',
-            loadChildren: () => import('../bookings/bookings.module').then(m => m.BookingsPageModule)
-          }
-        ]
-      },
-      {
         path: 'saved',
         children: [
           {
             path: '',
             loadChildren: () => import('../saved/saved.module').then(m => m.SavedPageModule)
+          }
+        ]
+      },
+      {
+        path: 'bookings',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../bookings/bookings.module').then(m => m.BookingsPageModule)
           }
         ]
       },

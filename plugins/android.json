@@ -7,41 +7,52 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
     "cordova-plugin-app-version": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
     },
     "cordova-plugin-camera": {
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
     },
     "cordova-plugin-ionic-webview": {
       "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
     },
     "cordova-plugin-safariviewcontroller": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "ANDROID_SUPPORT_V4_VERSION": "24.1.1+",
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.kitchenbrigade.matchstick"
+    }
+  }
 }

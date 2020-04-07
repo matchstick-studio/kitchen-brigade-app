@@ -1,5 +1,8 @@
 <ion-header>
     <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="app/recipes"></ion-back-button>
+      </ion-buttons>
       <ion-title>Your Bookmarks</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -7,15 +10,69 @@
 
 <ion-content>
 
-    <ng-container *ngIf="userFavs">
-        
-      <ion-row *ngFor="let fav of userFavs">
-        <ion-col class="favorite" size="12">
-          <h4 class="booking-type">{{ fav.id }}</h4>
-      </ion-col>  
-        </ion-row>
-              
+     <ion-refresher slot="fixed" (ionRefresh)="ionRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing bookmarks...">
+        </ion-refresher-content>
+        </ion-refresher>
 
-      </ng-container>
+        <div *ngIf="loading === true">
+            <div class="ion-padding custom-skeleton">
+              <div class="skeleton-item">
+                <ion-thumbnail size>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                  </ion-thumbnail>
+      
+                  <h5 class="recipeTitle">
+                      <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                      <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                      <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                  </h5>
+              </div>
+      
+              <div class="skeleton-item">
+                  <ion-thumbnail size>
+                      <ion-skeleton-text animated></ion-skeleton-text>
+                    </ion-thumbnail>
+        
+                    <h5 class="recipeTitle">
+                        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                        <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                    </h5>
+                </div>
+      
+                <div class="skeleton-item">
+                    <ion-thumbnail size>
+                        <ion-skeleton-text animated></ion-skeleton-text>
+                      </ion-thumbnail>
+          
+                      <h5 class="recipeTitle">
+                          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                        <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                      </h5>
+                  </div>
+              </div>
+          </div>
+
+          <div class="favorites" *ngIf="userFavs">
+
+              <ion-row>
+                  <ion-col size="12" *ngFor="let item of getKeys(thumbs)" (click)="goTo(thumbs.get(item).id)">
+                    <div class="recipe ion-text-start">
+                        <app-aspect-ratio [ratio]="{w:1, h:1}">
+                            <app-image-shell [mode]="'cover'" animation="spinner" class="item-image" [src]="thumbs.get(item).image"></app-image-shell>
+                          </app-aspect-ratio>
+                        <h5 class="recipeTitle">
+                            <app-text-shell animation="bouncing" [data]="thumbs.get(item).title" lines="2"></app-text-shell>
+                        </h5>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+          </div>
 
 </ion-content>

@@ -33,9 +33,10 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
 
 import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
-
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { SafariViewController } from '@ionic-native/safari-view-controller/ngx';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -47,6 +48,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
     ReactiveFormsModule,
     AppRoutingModule,
     ComponentsModule,
@@ -73,6 +75,7 @@ export function createTranslateLoader(http: HttpClient) {
     Camera,
     File,
     InAppBrowser,
+    SocialSharing,
     SafariViewController,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: FirestoreSettingsToken, useValue: {} }

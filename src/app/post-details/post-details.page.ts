@@ -5,7 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import * as firebase from 'firebase';
 import { Favorite } from '../models/favorite';
-import { ThrowStmt } from '@angular/compiler';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from '../services/firestore/firebase-authentication.service';
 
 @Component({
   selector: 'app-post-details',
@@ -17,7 +18,6 @@ export class PostDetailsPage implements OnInit {
 
   favorite:Favorite = {
     postId: "",
-    addedAt: new Date().getTime()
   };
 
   isFavorite = false;
@@ -33,6 +33,8 @@ export class PostDetailsPage implements OnInit {
     public favoritesService: FavoritesService, 
     private route: ActivatedRoute, 
     private router: Router,
+    private firestore: AngularFirestore,
+    private authServ: AuthService,
     private loadingCtrl: LoadingController
   ) { 
 
@@ -50,7 +52,7 @@ export class PostDetailsPage implements OnInit {
     }
   }
 
-  async toggleFavorite() {
+/*   async toggleFavorite() {
     const loading = await this.loadingCtrl.create({
       message: 'Saving...',
       spinner: 'crescent',
@@ -60,7 +62,6 @@ export class PostDetailsPage implements OnInit {
     if(this.favorite.id == null) {
       //save the new note
       this.favorite.postId = this.postId;
-      this.favorite.addedAt = new Date().getTime();
       this.favoritesService.addFavorite(this.favorite).then((favoriteDoc) => {
         this.favorite.id = favoriteDoc.id;
         this.isFavorite = true;
@@ -71,6 +72,33 @@ export class PostDetailsPage implements OnInit {
       loading.dismiss();
     }
    
+  } */
+
+  async toggleFavorite() {
+
+    const loading = await this.loadingCtrl.create({
+      message: 'Saving...',
+      spinner: 'crescent',
+      duration: 3000
+    });
+    loading.present();
+
+    const user: firebase.User = await this.authServ.getUser();
+    this.firestore.collection('users').doc(`${user.uid}`).collection('favorites').doc(this.postId)
+    .get()
+    .subscribe(docSnapshot => {
+      if (docSnapshot.exists) {
+        // check if recipe exists, if yes, delete the thing
+        this.favoritesService.deleteFavorite(this.postId)
+        this.isFavorite = false;
+        loading.dismiss();
+      } else {
+        // save the fucking recipe
+        this.favoritesService.addFavorite(this.postId)
+        this.isFavorite = true;
+        loading.dismiss();
+      }
+    });
   }
   
 }

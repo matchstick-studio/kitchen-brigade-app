@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit, ViewChild, HostBinding } from '@angul
 
 import { IonSlides, MenuController } from '@ionic/angular';
 
+import {  StorageService } from '../services/storage.service';
+
 @Component({
   selector: 'app-walkthrough',
   templateUrl: './walkthrough.page.html',
@@ -24,7 +26,10 @@ export class WalkthroughPage implements OnInit, AfterViewInit {
 
   @HostBinding('class.last-slide-active') isLastSlide = false;
 
-  constructor(public menu: MenuController) { }
+  constructor(
+    public menu: MenuController,
+    public storageService: StorageService
+    ) { }
 
   ngOnInit(): void {
     this.menu.enable(false);
@@ -34,6 +39,11 @@ export class WalkthroughPage implements OnInit, AfterViewInit {
     // ViewChild is set
     this.slides.isBeginning().then(isBeginning => {
       this.isFirstSlide = isBeginning;
+/*       this.storageService.set('TUTORIAL_IS_SEEN', false).then(result => {
+        console.log('Tutorial just started');
+      }).catch(e => {
+        console.log("error: " + e);
+      }) */
     });
     this.slides.isEnd().then(isEnd => {
       this.isLastSlide = isEnd;
@@ -56,4 +66,5 @@ export class WalkthroughPage implements OnInit, AfterViewInit {
       this.slides.slideTo(length);
     });
   }
+
 }

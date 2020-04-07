@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { WordpressService } from '../services/wordpress.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FavoritesService } from '../services/favorites.service';
 import { LoadingController } from '@ionic/angular';
 import { Favorite } from '../models/favorite';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from '../services/firestore/firebase-authentication.service';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-recipe-details',
@@ -15,7 +18,6 @@ export class RecipeDetailsPage implements OnInit {
 
   favorite:Favorite = {
     recipeId: "",
-    addedAt: new Date().getTime()
   };
 
   isFavorite = false;
@@ -37,13 +39,16 @@ export class RecipeDetailsPage implements OnInit {
   carbs;
   protein;
   cookingTime;
+  link;
 
   constructor(
     public wordpressService: WordpressService, 
     public favoritesService: FavoritesService, 
-    private route: ActivatedRoute, 
-    private router: Router,
-    private loadingCtrl: LoadingController
+    private route: ActivatedRoute,
+    private firestore: AngularFirestore,
+    private authServ: AuthService,
+    private loadingCtrl: LoadingController,
+    private socialSharing: SocialSharing
   ) { 
 
   }
@@ -54,6 +59,7 @@ export class RecipeDetailsPage implements OnInit {
         this.wordpressService.getRecipe(this.recipeId).subscribe(data => {
           this.title=data.title.rendered;
           this.image = data.fimg_url;
+          this.link = data.link;
           this.inBrief = data.acf.in_brief;
           this.difficulty = data.acf.difficulty;
           this.utensils = data.acf.utensils;
@@ -72,26 +78,39 @@ export class RecipeDetailsPage implements OnInit {
   }
 
   async toggleFavorite() {
+
     const loading = await this.loadingCtrl.create({
       message: 'Saving...',
       spinner: 'crescent',
       duration: 3000
     });
     loading.present();
-    if(this.favorite.id == null) {
-      //save the new note
-      this.favorite.recipeId = this.recipeId;
-      this.favorite.addedAt = new Date().getTime();
-      this.favoritesService.addFavorite(this.favorite).then((favoriteDoc) => {
-        this.favorite.id = favoriteDoc.id;
+
+    const user: firebase.User = await this.authServ.getUser();
+    this.firestore.collection('users').doc(`${user.uid}`).collection('favorites').doc(this.recipeId)
+    .get()
+    .subscribe(docSnapshot => {
+      if (docSnapshot.exists) {
+        // check if recipe exists, if yes, delete the thing
+        this.favoritesService.deleteFavorite(this.recipeId)
+        this.isFavorite = false;
+        loading.dismiss();
+      } else {
+        // save the fucking recipe
+        this.favoritesService.addFavorite(this.recipeId)
         this.isFavorite = true;
         loading.dismiss();
-      });
-    } else {
-      this.favoritesService.deleteFavorite(this.favorite.id);
-      loading.dismiss();
-    }
-   
+      }
+    });
   }
+
+  shareRecipe() {
+    this.socialSharing.share(null, null, null, this.link).then((res) => {
+      // shared
+    }).catch((e) => {
+      // Error!
+    });
+  }
+
 
 }

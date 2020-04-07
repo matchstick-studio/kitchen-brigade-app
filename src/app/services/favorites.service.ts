@@ -30,7 +30,7 @@ export class FavoritesService {
 
   async refreshFavoritesCollection(userId) {
     const user: firebase.User = await this.authServ.getUser();
-    this.favoritesCollection = this.firestore.collection('users').doc(`${user.uid}`).collection<Favorite>('favorites');
+    this.favoritesCollection = this.firestore.collection('users').doc(`${user.uid}`).collection('favorites');
       this.favorites = this.favoritesCollection.snapshotChanges().pipe(
         map(actions => actions.map(a => {
           const data = a.payload.doc.data();
@@ -40,19 +40,13 @@ export class FavoritesService {
       )
   }
 
-  getFavorites() {
-    return this.favorites;
-  }
-async updateFavorite(favorite: Favorite): Promise<void> {
+  async deleteFavorite(recipeId: string) {
     const user: firebase.User = await this.authServ.getUser();
-    return this.firestore.collection('users').doc(`${user.uid}`).collection<Favorite>('favorites').doc(favorite.id).update(favorite);
+    return this.firestore.collection('users').doc(`${user.uid}`).collection('favorites').doc(recipeId).delete();
   }
-  deleteFavorite(id: string) {
-    this.favoritesCollection.doc(id).delete();
-  }
-  async addFavorite(favorite: Favorite): Promise<DocumentReference> {
+  async addFavorite(recipeId: string) {
     const user: firebase.User = await this.authServ.getUser();
-    return await this.firestore.collection('users').doc(`${user.uid}`).collection<Favorite>('favorites').add(favorite);
+    return await this.firestore.collection('users').doc(`${user.uid}`).collection('favorites').doc(recipeId).set({recipeId});
   }
 
   getCurrentUser() {

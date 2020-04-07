@@ -1,37 +1,33 @@
-#Usual Crap
+www/
+
+*~
+*.sw[mnpcod]
+*.log
+*.tmp
+*.tmp.*
+log.txt
+*.sublime-project
+*.sublime-workspace
 .vscode/
-.DS_Store
-.idea
-.temp
-.sass-cache
-Thumbs.db
-.env
-
-#ionic
+npm-debug.log*
+.firebase/
+.idea/
+.sourcemaps/
+.sass-cache/
+.tmp/
+.versions/
+coverage/
+dist/
 node_modules/
+tmp/
+temp/
+hooks/
+platforms/
 plugins/
-www/lib
+plugins/android.json
+plugins/ios.json
+$RECYCLE.BIN/
 
-#Platform iOS
-*.mode1v3
-*.perspectivev3
-*.pbxuser
-platforms/ios/build
-
-#Platform Android
-platforms/android/build.xml
-platforms/android/local.properties
-platforms/android/gradlew
-platforms/android/gradlew.bat
-platforms/android/gradle
-
-#Ant builds
-platforms/android/ant-build
-platforms/android/ant-gen
-
-#Eclipse builds
-platforms/android/gen
-platforms/android/out
-
-#Gradle builds
-platforms/android/build
+.DS_Store
+Thumbs.db
+UserInterfaceState.xcuserstate
