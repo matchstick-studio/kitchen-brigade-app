@@ -10,7 +10,7 @@
           "NSCameraUsageDescription": [
             {
               "xml": "<string>You can take photos</string>",
-              "count": 2
+              "count": 4
             }
           ],
           "NSPhotoLibraryAddUsageDescription": [

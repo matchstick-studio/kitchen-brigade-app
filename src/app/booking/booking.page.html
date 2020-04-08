@@ -12,7 +12,7 @@
     <ion-col size="12">
       <h2>Lets confirm your booking</h2>
 
-      <ion-item>
+      <ion-item *ngIf="packageInfo">
           <ion-thumbnail slot="start">
             <ion-img [src]="packageInfo.image"></ion-img>
           </ion-thumbnail>
@@ -33,7 +33,7 @@
 
           <ion-item class="input-item">
               <ion-label>Choose a date</ion-label>
-              <ion-datetime formControlName="date" displayFormat="DD/MM/YYYY" [min]="minDate" placeholder="Select date"></ion-datetime>
+              <ion-datetime formControlName="date" displayFormat="DD/MM/YYYY" placeholder="Select date"></ion-datetime>
             </ion-item>
             <div class="error-container">
               <ng-container *ngFor="let validation of validations.date">

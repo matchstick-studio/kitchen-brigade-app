@@ -18,6 +18,9 @@ import * as firebase from 'firebase';
 })
 export class BookingPage implements OnInit {
 
+  image;
+  name;
+
   // Data passed in by componentProps
  @Input() packageInfo: Package[];
  @Input() packageId: string;

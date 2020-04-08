@@ -31,3 +31,7 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+my-release-key.keystore
+my-release-key.keystore.old
+.DS_Store
+.DS_Store

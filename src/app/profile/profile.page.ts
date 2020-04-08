@@ -87,7 +87,7 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  openPage(url: string, readerMode) {
+  openPage(url: string) {
 
     this.safariViewController.isAvailable()
     .then((available: boolean) => {
@@ -97,7 +97,6 @@ export class ProfilePage implements OnInit {
               hidden: false, // default false. You can use this to load cookies etc in the background (see issue #1 for details).
               animated: false, // default true, note that 'hide' will reuse this preference (the 'Done' button will always animate though)
               transition: 'curl', // (this only works in iOS 9.1/9.2 and lower) unless animated is false you can choose from: curl, flip, fade, slide (default)
-              enterReaderModeIfAvailable: readerMode, // default false
               tintColor: "#00ffff", // default is ios blue
               barColor: "#0000ff", // on iOS 10+ you can change the background color as well
               controlTintColor: "#ffffff" // on iOS 10+ you can override the default tintColor
