@@ -250,10 +250,10 @@ export class ProfilePage implements OnInit {
   /* contact us section */
   contactByEmail() {
     this.socialSharing.shareViaEmail(
-      'Message', // can contain HTML tags, but support on Android is rather limited:  http://stackoverflow.com/questions/15136480/how-to-send-html-content-with-image-through-android-default-email-client
-      'Please advise',
+      'Your message', // can contain HTML tags, but support on Android is rather limited:  http://stackoverflow.com/questions/15136480/how-to-send-html-content-with-image-through-android-default-email-client
+      'Subject of concern',
       ['hello@kitchenbrigade.org'], // TO: must be null or an array
-      ['cc@person1.com'], // CC: must be null or an array
+      null, // CC: must be null or an array
       null, // BCC: must be null or an array
       null, // FILES: can be null, a string, or an array
     );
