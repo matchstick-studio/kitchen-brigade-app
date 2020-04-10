@@ -8,6 +8,7 @@ import { UserProfile } from '../models/user';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 import { SafariViewController } from '@ionic-native/safari-view-controller/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-profile',
@@ -59,6 +60,7 @@ export class ProfilePage implements OnInit {
     private appVersion: AppVersion,
     public authService: AuthService,
     public actionsheetCtrl: ActionSheetController,
+    private socialSharing: SocialSharing,
   ) {
     if(this.platform.is('cordova')) { 
    this.appVersion.getPackageName().then(value => {
@@ -97,8 +99,8 @@ export class ProfilePage implements OnInit {
               hidden: false, // default false. You can use this to load cookies etc in the background (see issue #1 for details).
               animated: false, // default true, note that 'hide' will reuse this preference (the 'Done' button will always animate though)
               transition: 'curl', // (this only works in iOS 9.1/9.2 and lower) unless animated is false you can choose from: curl, flip, fade, slide (default)
-              tintColor: "#00ffff", // default is ios blue
-              barColor: "#0000ff", // on iOS 10+ you can change the background color as well
+              tintColor: "#A52A2A", // default is ios blue
+              barColor: "#A52A2A", // on iOS 10+ you can change the background color as well
               controlTintColor: "#ffffff" // on iOS 10+ you can override the default tintColor
             })
             .subscribe((result: any) => {
@@ -245,5 +247,16 @@ export class ProfilePage implements OnInit {
     this.router.navigateByUrl('auth/login');
   }
 
+  /* contact us section */
+  contactByEmail() {
+    this.socialSharing.shareViaEmail(
+      'Message', // can contain HTML tags, but support on Android is rather limited:  http://stackoverflow.com/questions/15136480/how-to-send-html-content-with-image-through-android-default-email-client
+      'Please advise',
+      ['hello@kitchenbrigade.org'], // TO: must be null or an array
+      ['cc@person1.com'], // CC: must be null or an array
+      null, // BCC: must be null or an array
+      null, // FILES: can be null, a string, or an array
+    );
+  }
 
 }

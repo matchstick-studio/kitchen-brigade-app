@@ -45,15 +45,24 @@
 
       </ion-list>
 
-      <ion-list class="legal" lines="none">
+      <ion-list lines="none">
+          <ion-list-header>
+            <ion-label>Contact us</ion-label>
+          </ion-list-header>
+          <ion-item button (click)="contactByEmail()" detail>
+            Email
+          </ion-item>
+        </ion-list>
+
+      <ion-list lines="none">
         <ion-list-header>
           <ion-label>Legal</ion-label>
         </ion-list-header>
         <ion-item button (click)="openPage('https://kitchenbrigade.org/privacy-policy/')" detail>
-         Privacy Policy
+          Privacy Policy
         </ion-item>
         <ion-item button (click)="openPage('https://kitchenbrigade.org/about/')" detail>
-        About KitchenBrigade
+          About KitchenBrigade
           </ion-item>
       </ion-list>
 

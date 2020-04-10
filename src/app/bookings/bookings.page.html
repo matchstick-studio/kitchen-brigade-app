@@ -4,9 +4,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
-    <ng-container *ngIf="userBookings">
+    <div *ngIf="userBookings.length >= 1; else noBookings">
 
 
         <ion-row class="bookingType" *ngFor="let booking of userBookings">
@@ -29,36 +29,22 @@
             </ion-col>
         </ion-row>
 
-        
-  
-       <!--  <ion-item-group>
-            <ion-item-divider sticky>
-              <ion-label>Upcoming</ion-label>
-            </ion-item-divider>
-              <ion-row class="bookingType" *ngFor="let booking of userBookings">
-                  <ion-col *ngIf="(booking.date | date:'fullDate') > (today | date:'fullDate')" class="booking" size="12">
-                    <h4 class="booking-type">{{ booking.id }}</h4>
-                    {{ booking.packageId }}
-                    <p>{{ booking.date | date }} at {{ booking.time | date: 'shortTime' }}</p>
-                  </ion-col>
-              </ion-row>
-              <ng-template #noUpcoming><p style="padding-inline-start: 20px;">You have no bookings scheduled at this time.</p></ng-template>
-          </ion-item-group>
+      </div>
 
-          <ion-item-group>
-              <ion-item-divider sticky>
-                <ion-label>In the past</ion-label>
-              </ion-item-divider>
-              <ion-row class="bookingType" *ngFor="let booking of userBookings">
-                    <ion-col *ngIf="(booking.date | date:'fullDate') < (today | date:'fullDate')" class="booking" size="12" routerLink="details/{{ booking.id }}">
-                        <h4 class="booking-type">{{ booking.id }}</h4>
-                        {{ booking.packageId }}
-                        <p>{{ booking.date | date }} at {{ booking.time | date: 'shortTime' }}</p>
-                      </ion-col>
-                </ion-row>
-            </ion-item-group> -->
-
-      </ng-container>
+    <ng-template #noBookings>
+       <ion-grid style="height: 100%">
+        <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+          <div text-center>
+            <img src="../../assets/images/no-booking.svg" />
+            <p>Can't find any bookings for you.</p>
+            <br>
+            <ion-button routerLink="/app/explore" expand="block" fill="solid" shape="round">
+              Start here
+            </ion-button>
+          </div>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
   
 
 </ion-content>

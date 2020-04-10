@@ -8,7 +8,7 @@
   </ion-header>
   
 
-<ion-content>
+<ion-content class="ion-padding">
 
      <ion-refresher slot="fixed" (ionRefresh)="ionRefresh($event)">
         <ion-refresher-content
@@ -19,7 +19,7 @@
         </ion-refresher-content>
         </ion-refresher>
 
-        <div *ngIf="loading === true">
+        <div *ngIf="userFavs.length >= 1 && loading === true">
             <div class="ion-padding custom-skeleton">
               <div class="skeleton-item">
                 <ion-thumbnail size>
@@ -59,7 +59,7 @@
               </div>
           </div>
 
-          <div class="favorites" *ngIf="userFavs">
+          <div class="favorites" *ngIf="userFavs.length >= 1; else noFavs">
 
               <ion-row>
                   <ion-col size="12" *ngFor="let item of getKeys(thumbs)" (click)="goTo(thumbs.get(item).id)">
@@ -74,5 +74,20 @@
                     </ion-col>
                   </ion-row>
           </div>
+
+          <ng-template #noFavs>
+              <ion-grid style="height: 100%">
+                  <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+                    <div text-center>
+                      <img src="../../assets/images/no-saved.svg" />
+                      <p>You haven't saved any recipes yet</p>
+                      <br>
+                      <ion-button routerLink="/app/recipes" expand="block" fill="solid" shape="round">
+                        Go to recipes
+                      </ion-button>
+                    </div>
+                  </ion-row>
+                </ion-grid>
+          </ng-template>
 
 </ion-content>

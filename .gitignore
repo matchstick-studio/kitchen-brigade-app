@@ -31,8 +31,6 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
-my-release-key.keystore
-my-release-key.keystore.old
 .DS_Store
 keystore.jks
 upload_certificate.pem

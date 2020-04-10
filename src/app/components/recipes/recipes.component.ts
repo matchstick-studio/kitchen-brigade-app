@@ -19,8 +19,9 @@ export class RecipesComponent implements OnInit {
   loading:boolean;
 
   slideOptsRecipes = {
-    spaceBetween: 0,
-    slidesPerView: 2,
+    spaceBetween: 10,
+    slidesPerView: 1,
+    centeredSlides: true
   };
 
   constructor(
@@ -49,9 +50,9 @@ export class RecipesComponent implements OnInit {
     this.loading = true;
     if(this.wordpressService.wp_org){
       this.wordpressService.getRecipes(this.page).subscribe(data => {
-        this.items = data;
-        console.log('Recipe data:', data);
-        for (let res of data) {
+        this.items = data.slice(0,6);
+        console.log('Recipe data:', this.items);
+        for (let res of this.items) {
           if(!this.thumbs.has(res.id)){
             this.thumbs.set(res.id, {id: res.id, title: res.title.rendered, image: res.fimg_url});
           }        
@@ -60,11 +61,6 @@ export class RecipesComponent implements OnInit {
         this.loaded = true;
       });
     }
-  }
-
-  next() {
-    this.page++;
-    this.loadRecipes();
   }
 
   ngOnInit() {
